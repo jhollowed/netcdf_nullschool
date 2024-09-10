@@ -23,7 +23,7 @@ brew install mv    #install Maven
 
 # ---- install grib2json
 cd netcdf_nullschool #important! grib2json must be installed in the repo directory for everything to work without script modification
-git clone grib2json
+git clone https://github.com/cambecc/grib2json.git
 cd grib2json
 mvn package
 tar -xvf target/grib2json-0.8.0-SNAPSHOT.tar.gz
