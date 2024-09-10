@@ -1,3 +1,73 @@
+netcdf_nullschool
+====
+
+This is a fork of cambecc's [earth](https://github.com/cambecc/earth) repositroy, also known as [earth.nullschool.net](https://earth.nullschool.net/about.html). This fork adds the ability to load custom netcdf files into the browser-based viewer, by providing tools for converting the netcdf data to JSON. This is done by first converting the data to GRIB2 with [CDO](https://code.mpimet.mpg.de/projects/cdo), and then to JSON with [grib2json](https://github.com/cambecc/grib2json).
+
+To install, first follow the installation instructions from cambecc's original README (repoduced below). You will need to install Node.js, grib2json, and CDO. On a Mac, someting like the following should work
+```
+# ---- install dependencies
+brew install node  #install Node.js (also installs npm)
+
+# ---- install the fork
+git clone https://github.com/jhollowed/netcdf_nullschool
+cd netcdf_nullschool
+npm install
+
+# ---- launch the server
+node dev-server.js 8080
+```
+At this point, you can point your browser to `http://localhost:8080`, and it should be running. Now, additional steps are required to use the custom NetCDF functionality. On a Mac, something like the following should work
+```
+brew install cdo   #install CDO
+brew install mv    #install Maven
+
+# ---- install grib2json
+git clone grib2json
+cd grib2json
+mvn package
+tar -xvf grib2json-0.8.0-SNAPSHOT.tar.gz
+```
+In my case, I had to make some modificaitons to the installation process of `grib2json`, as the package is very outdated. Specifically, the file `grib2json/pom.xml` needs to be modified to instuct `mvn` to compile with a newer version of Java. Specifically, the snippet
+```
+<!-- Compile with Java 7. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <compilerVersion>1.7</compilerVersion>
+                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                </configuration>
+            </plugin
+```
+needed to be replaced with
+```
+<!-- Compile with Java 17. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <compilerVersion>17</compilerVersion>
+                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                </configuration>
+            </plugin
+```
+since Java 17 was the latest available on my system. After this, before the command line utility will work, I also had to set `JAVA_HOME` via (see [here](https://stackoverflow.com/questions/22842743/how-to-set-java-home-environment-variable-on-mac-os-x-10-9)):
+```
+echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bashrc
+source ~/.bashrc
+```
+Now, in `netcdf_nullschool`, specify your location of `grib2json`, by renaming 
+
+
+
+For more information, here is the original README for the forked repo:
+
 earth
 =====
 
