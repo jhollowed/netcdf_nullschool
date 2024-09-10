@@ -22,6 +22,7 @@ brew install cdo   #install CDO
 brew install mv    #install Maven
 
 # ---- install grib2json
+cd netcdf_nullschool #important! grib2json must be installed in the repo directory for everything to work without script modification
 git clone grib2json
 cd grib2json
 mvn package
