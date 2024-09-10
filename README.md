@@ -25,7 +25,7 @@ brew install mv    #install Maven
 git clone grib2json
 cd grib2json
 mvn package
-tar -xvf grib2json-0.8.0-SNAPSHOT.tar.gz
+tar -xvf target/grib2json-0.8.0-SNAPSHOT.tar.gz
 ```
 In my case, I had to make some modificaitons to the installation process of `grib2json`, as the package is very outdated. Specifically, the file `grib2json/pom.xml` needs to be modified to instuct `mvn` to compile with a newer version of Java. Specifically, the snippet
 ```
