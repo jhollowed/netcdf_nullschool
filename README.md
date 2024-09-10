@@ -22,10 +22,11 @@ brew install cdo   #install CDO
 brew install mv    #install Maven
 
 # ---- install grib2json
-git clone grib2json
+cd netcdf_nullschool #important! grib2json must be installed in the repo directory for everything to work without script modification
+git clone https://github.com/cambecc/grib2json.git
 cd grib2json
 mvn package
-tar -xvf grib2json-0.8.0-SNAPSHOT.tar.gz
+tar -xvf target/grib2json-0.8.0-SNAPSHOT.tar.gz
 ```
 In my case, I had to make some modificaitons to the installation process of `grib2json`, as the package is very outdated. Specifically, the file `grib2json/pom.xml` needs to be modified to instuct `mvn` to compile with a newer version of Java. Specifically, the snippet
 ```
