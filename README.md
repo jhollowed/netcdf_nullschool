@@ -63,9 +63,6 @@ since Java 17 was the latest available on my system. After this, before the comm
 echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bashrc
 source ~/.bashrc
 ```
-Now, in `netcdf_nullschool`, specify your location of `grib2json`, by renaming 
-
-
 
 For more information, here is the original README for the forked repo:
 
