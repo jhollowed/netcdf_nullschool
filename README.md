@@ -19,7 +19,7 @@ node dev-server.js 8080
 At this point, you can point your browser to `http://localhost:8080`, and it should be running. Now, additional steps are required to use the custom NetCDF functionality. On a Mac, something like the following should work
 ```
 brew install cdo   #install CDO
-brew install mv    #install Maven
+brew install maven    #install Maven
 
 # ---- install grib2json
 cd netcdf_nullschool #important! grib2json must be installed in the repo directory for everything to work without script modification
